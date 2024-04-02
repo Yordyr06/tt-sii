@@ -1,10 +1,13 @@
-type Props = {
+import { ChangeEvent, FC } from "react";
+
+interface Props {
   name: string;
   type: string;
   className?: string;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => boolean;
 }
 
-export const Field = ({ name, type, className }: Props): JSX.Element => {
+export const Field: FC<Props> = ({ name, type, className }) => {
   return (
     <article 
       className={`flex flex-col basis-1/3 ${className}`}
