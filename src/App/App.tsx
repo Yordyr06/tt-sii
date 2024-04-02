@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Container 
-        className='flex-col'
+        className='flex-col mt-52'
       >
         <Img />
         <Container
