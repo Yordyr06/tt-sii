@@ -4,11 +4,6 @@ import { Img } from './Components/Img'
 import { Form } from './Form/Form'
 import { Field } from './Form/Field'
 import { Button } from './Components/Button'
-import type { ChangeEvent } from 'react'
-
-const fieldRequired = (event: ChangeEvent<HTMLInputElement>): boolean => {
-  return event.target.value ? true : false;
-}
 
 function App() {
   return (
@@ -23,21 +18,15 @@ function App() {
           <Form>
             <Field 
               name="Numero de Tarjeta"
-              type="password"
-              className=""
-              onChange={fieldRequired}
             />
             <Field 
               name="Fecha de Vencimiento"
-              type="date"
             />
             <Field 
               name="Nombre del Titular"
-              type="text"
             />
             <Field 
               name="CVV"
-              type="password"
             />
           </Form>
           <Container 

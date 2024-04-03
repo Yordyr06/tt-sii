@@ -35,7 +35,14 @@ export const useData = () => {
 
   return (
     {
-
+      data,
+      loading,
+      error,
+      value,
+      setValue,
+      getData,
+      addData,
+      deleteData
     }
   )
 }

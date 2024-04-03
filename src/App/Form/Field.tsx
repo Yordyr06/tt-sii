@@ -1,16 +1,23 @@
-import { ChangeEvent, FC } from "react";
+import { useState } from "react";
+import type { FC, ChangeEvent } from "react";
 
+type OnChange = (event: ChangeEvent<HTMLInputElement>) => void;
 interface Props {
   name: string;
-  type: string;
+  onChanges?: OnChange[];
   className?: string;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => boolean;
 }
 
-export const Field: FC<Props> = ({ name, type, className }) => {
+export const Field: FC<Props> = ({ name, className }) => {
+  const [value, setValue] = useState("");
+
+  const handleChange: OnChange = (event) => {
+    setValue(event.target.value);
+  }
+
   return (
     <article 
-      className={`flex flex-col basis-1/3 ${className}`}
+      className={`flex flex-col basis-2/5 ${className}`}
     >
       <label
         typeof="string"
@@ -18,8 +25,10 @@ export const Field: FC<Props> = ({ name, type, className }) => {
         className="text-sm font-semibold mb-2 text-justify"
       >{ name }</label>
       <input 
-        type={type}
-        className="border border-gray-300/30 p-2 rounded-xl focus:outline-none"
+        type="text"
+        value={value}
+        onChange={handleChange}
+        className={`border border-gray-300/30 px-4 h-8 rounded-md focus:outline-none ${name === "CVV" ? "w-1/2" : "w-full"}`}
       />
     </article>
   );

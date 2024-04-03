@@ -7,7 +7,7 @@ interface Props {
 export const Form: FC<Props> = ({ children }) => {
   return (
     <form
-      className="flex flex-wrap justify-center space-x-8 mx-10 pt-28 pb-10 gap-4 w-[480px]"
+      className="flex flex-wrap justify-center mx-10 pt-28 pb-10 gap-x-10 gap-y-8 w-[480px]"
     >
       { children }
     </form>
