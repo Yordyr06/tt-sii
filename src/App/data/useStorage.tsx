@@ -1,14 +1,27 @@
 import { useEffect, useState } from "react";
 
-export function useStorage(storage, initialStorage) {
+export interface CreditCard {
+  name: string;
+  number: string;
+  cvv: string;
+  date: string;
+}
+interface StorageHook {
+  data: CreditCard[];
+  loading: boolean;
+  error: Error | null;
+  setStorage: (newStorage: CreditCard[]) => void;
+}
+
+export function useStorage(storage: string, initialStorage: CreditCard[]): StorageHook {
   const [data, setData] = useState(initialStorage)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<Error | null>(null)
 
   useEffect(() => {
     try {
       setLoading(true)
-      let dataList
+      let dataList: CreditCard[] = initialStorage
       const getStorage = localStorage.getItem(storage)
 
       if (getStorage) {
@@ -19,14 +32,14 @@ export function useStorage(storage, initialStorage) {
         dataList = initialStorage
       }
     } catch (error) {
-      setError(error)
+      setError(new Error(`Error al obtener los datos: ${error}`))
       setLoading(false)
     } finally {
       setLoading(false)
     }
-  }, [storage])
+  }, [storage, initialStorage])
 
-  const setStorage = (newStorage) => {
+  const setStorage = (newStorage: CreditCard[]) => {
     localStorage.setItem(storage, JSON.stringify(newStorage))
     setData(newStorage)
   }

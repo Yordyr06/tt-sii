@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useStorage } from "./useStorage";
+import type { CreditCard } from "./useStorage";
 
 export const useData = () => {
   const {
@@ -11,19 +12,17 @@ export const useData = () => {
 
   const [value, setValue] = useState("")
 
-  const getData = data.filter(item => item.value === value) 
+  const getData = data.filter(item => item.number === value) 
 
-  const addData = (value) => {
-    const newValue = [...data,]
-    newValue.push({
-      value
-    })
+  const addData = (value: CreditCard) => {
+    const newValue = []
+    newValue.push(...data, value)
     setStorage(newValue)
   }
 
-  const deleteData = (data) => {
+  const deleteData = (value: CreditCard) => {
     const updateData = [...data]
-    const index = updateData.findIndex((item) => item === data)
+    const index = updateData.findIndex((item) => item === value)
 
     if (index !== -1) {
       updateData.splice(index, 1)
