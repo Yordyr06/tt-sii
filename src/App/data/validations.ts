@@ -1,97 +1,61 @@
-interface res {
-  message: string;
+export interface Res {
+  number: string;
+  name: string;
+  date: string;
+  cvv: string;
   bool: boolean;
 }
 
-export const response: res = {
-  message: "",
+export interface Validations {
+  number: (number: string) => Res;
+  name: (name: string) => Res;
+  date: (date: string) => Res;
+  cvv: (cvv: string) => Res;
+}
+
+export const response: Res = {
+  number: "",
+  name: "",
+  date: "",
+  cvv: "",
   bool: false,
 }
 
-export const validation = {
-  number: (number: string): res => {
+export const validations: Validations  = {
+  number: (number: string): Res => {
     const regex = /^[0-9]{16}$/;
     if (!regex.test(number)) {
-      response.message = "Número de tarjeta inválido";
+      response.number = "Número de tarjeta inválido";
       return response;
     }
-    response.bool = true;
-    response.message = "Número de tarjeta válido";
+    response.number = "Número de tarjeta válido";
     return response;
   },
-  name: (name: string): res => {
+  name: (name: string): Res => {
     const regex = /^[a-zA-ZáéíóúÁÉÍÓÚ ]{0,20}$/;
     if (!regex.test(name)) {
-      response.message = "Nombre inválido";
+      response.name = "Nombre inválido";
       return response;
     }
-    response.bool = true;
-    response.message = "Nombre válido"
+    response.name = "Nombre válido"
     return response;
   },
-  date: (date: string): res => {
+  date: (date: string): Res => {
     const regex = /^(0[1-9]|1[0-2])\/(2[2-7])$/
     if (!regex.test(date)) {
-      response.message = "Fecha inválida";
+      response.date = "Fecha inválida";
       return response;
     }
-    response.bool = true;
-    response.message = "Fecha válida";
+    response.date = "Fecha válida";
     return response;
   },
-  cvv: (cvv: string): res => {
+  cvv: (cvv: string): Res => {
     const regex = /^[0-9]{3}$/;
     if (!regex.test(cvv)) {
-      response.message = "CVV inválido";
+      response.cvv = "CVV inválido";
       return response;
     }
-    response.bool = true;
-    response.message = "CVV válido";
+    response.cvv = "CVV válido";
     return response;
   }
-
 }
-
-// export const validateNumber = (number: string): res => {
-//   const regex = /^[0-9]{16}$/;
-//   if (!regex.test(number)) {
-//     response.message = "Número de tarjeta inválido";
-//     return response;
-//   }
-//   response.bool = true;
-//   response.message = "Número de tarjeta válido";
-//   return response;
-// }
-
-// export const validateName = (name: string): res => {
-//   const regex = /^[a-zA-ZáéíóúÁÉÍÓÚ ]{0,20}$/;
-//   if (!regex.test(name)) {
-//     response.message = "Nombre inválido";
-//     return response;
-//   }
-//   response.bool = true;
-//   response.message = "Nombre válido"
-//   return response;
-// }
-
-// export const validationDate = (date: string): res => {
-//   const regex = /^(0[1-9]|1[0-2])\/(2[2-7])$/
-//   if (!regex.test(date)) {
-//     response.message = "Fecha inválida";
-//     return response;
-//   }
-//   response.bool = true;
-//   response.message = "Fecha válida";
-//   return response;
-// }
-
-// export const validateCvv = (cvv: string): res => {
-//   const regex = /^[0-9]{3}$/;
-//   if (!regex.test(cvv)) {
-//     response.message = "CVV inválido";
-//     return response;
-//   }
-//   response.bool = true;
-//   response.message = "CVV válido";
-//   return response;
-// }

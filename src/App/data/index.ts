@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useStorage } from "./useStorage";
 import type { CreditCard } from "./useStorage";
 
@@ -10,14 +9,18 @@ export const useData = () => {
     setStorage
   } = useStorage("DATA_V1", [])
 
-  const [value, setValue] = useState("")
-
-  const getData = data.filter(item => item.number === value) 
+  const getData = () => {
+    return data
+  }
 
   const addData = (value: CreditCard) => {
     const newValue = []
     newValue.push(...data, value)
     setStorage(newValue)
+  }
+
+  const setData = (value: CreditCard[]) => {
+    setStorage(value)
   }
 
   const deleteData = (value: CreditCard) => {
@@ -32,16 +35,13 @@ export const useData = () => {
     }
   }
 
-  return (
-    {
-      data,
-      loading,
-      error,
-      value,
-      setValue,
-      getData,
-      addData,
-      deleteData
-    }
-  )
+  return ({
+    data,
+    loading,
+    error,
+    getData,
+    addData,
+    setData,
+    deleteData
+  })
 }

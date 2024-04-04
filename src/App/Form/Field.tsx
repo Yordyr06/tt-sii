@@ -1,18 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import type { FC, ChangeEvent } from "react";
 
 type OnChange = (event: ChangeEvent<HTMLInputElement>) => void;
 interface Props {
   name: string;
-  onChanges?: OnChange[];
+  validations: (value: string) => void;
   className?: string;
 }
 
-export const Field: FC<Props> = ({ name, className }) => {
+export const Field: FC<Props> = ({ name, className, validations }) => {
   const [value, setValue] = useState("");
+
+  useEffect(() => {
+    setValue("");
+  }, [value])
 
   const handleChange: OnChange = (event) => {
     setValue(event.target.value);
+    validations(event.target.value);
   }
 
   return (

@@ -26,14 +26,13 @@ export function useStorage(storage: string, initialStorage: CreditCard[]): Stora
 
       if (getStorage) {
         dataList = JSON.parse(getStorage)
-        setData(dataList)
       } else {
         localStorage.setItem(storage, JSON.stringify(initialStorage))
         dataList = initialStorage
       }
+      setData(dataList)
     } catch (error) {
       setError(new Error(`Error al obtener los datos: ${error}`))
-      setLoading(false)
     } finally {
       setLoading(false)
     }

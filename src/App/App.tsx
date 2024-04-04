@@ -1,4 +1,5 @@
 import React from 'react'
+import { useAppContext } from './data/Context'
 import { Container } from './Components/Container'
 import { Img } from './Components/Img'
 import { Form } from './Form/Form'
@@ -6,6 +7,8 @@ import { Field } from './Form/Field'
 import { Button } from './Components/Button'
 
 function App() {
+  const { validations } = useAppContext();
+
   return (
     <>
       <Container 
@@ -18,15 +21,19 @@ function App() {
           <Form>
             <Field 
               name="Numero de Tarjeta"
+              validations={validations.number}
             />
             <Field 
               name="Fecha de Vencimiento"
+              validations={validations.date}
             />
             <Field 
               name="Nombre del Titular"
+              validations={validations.name}
             />
             <Field 
               name="CVV"
+              validations={validations.cvv}
             />
           </Form>
           <Container 
