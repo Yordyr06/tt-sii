@@ -4,17 +4,17 @@ import { useAppContext } from "../data/Context";
 
 type OnChange = (event: ChangeEvent<HTMLInputElement>) => void;
 interface Props {
-  name: string;
+  componentName: string;
   validations: (value: string) => void;
   className?: string;
 }
 
-export const Field: FC<Props> = ({ name, className, validations }) => {
-  const { titular, digits, date, cvv } = useAppContext();
+export const Field: FC<Props> = ({ componentName, className, validations }) => {
+  const { name, digits, date, cvv } = useAppContext();
 
   useEffect(() => {
-    validations(titular);
-  }, [value, validations, setValue]);
+    validations();
+  }, [value, setValue, validations]);
 
 
   const handleChange: OnChange = (event) => {
@@ -30,12 +30,12 @@ export const Field: FC<Props> = ({ name, className, validations }) => {
         typeof="string"
         title="number"
         className="text-sm font-semibold mb-2 text-justify"
-      >{ name }</label>
+      >{ componentName }</label>
       <input 
         type="text"
         value={value}
         onChange={handleChange}
-        className={`border border-gray-300/30 px-4 h-8 rounded-md focus:outline-none ${name === "CVV" ? "w-1/2" : "w-full"}`}
+        className={`border border-gray-300/30 px-4 h-8 rounded-md focus:outline-none ${componentName === "CVV" ? "w-1/2" : "w-full"}`}
       />
       
     </article>

@@ -16,7 +16,7 @@ export const useData = () => {
     setStorage
   } = useStorage("DATA_V1", [])
 
-  const [titular, setTitular] = useState<Name>("");
+  const [name, setName] = useState<Name>("");
   const [digits, setDigits] = useState<Digits>("");
   const [date, setDate] = useState<Date>("");
   const [cvv, setCVV] = useState<CVV>("");
@@ -50,7 +50,7 @@ export const useData = () => {
   }
 
   const clearFields = () => {
-    setTitular("")
+    setName("")
     setDigits("")
     setDate("")
     setCVV("")
@@ -65,8 +65,8 @@ export const useData = () => {
     addData,
     setData,
     deleteData,
-    titular,
-    setTitular,
+    name,
+    setName,
     digits,
     setDigits,
     date,

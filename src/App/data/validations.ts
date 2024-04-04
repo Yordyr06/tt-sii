@@ -5,7 +5,6 @@ export interface Res {
   cvv: string;
   bool: boolean;
 }
-
 export interface Validations {
   number: (number: string) => Res;
   name: (name: string) => Res;

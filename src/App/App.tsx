@@ -26,19 +26,19 @@ function App() {
         >
           <Form>
             <Field 
-              name="Numero de Tarjeta"
+              componentName="Numero de Tarjeta"
               validations={validations.number}
             />
             <Field 
-              name="Fecha de Vencimiento"
+              componentName="Fecha de Vencimiento"
               validations={validations.date}
             />
             <Field 
-              name="Nombre del Titular"
+              componentName="Nombre del Titular"
               validations={validations.name}
             />
             <Field 
-              name="CVV"
+              componentName="CVV"
               validations={validations.cvv}
             />
           </Form>
