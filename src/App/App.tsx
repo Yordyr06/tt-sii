@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useAppContext } from './data/Context'
 import { Container } from './Components/Container'
 import { Img } from './Components/Img'
