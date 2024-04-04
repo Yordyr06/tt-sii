@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react';
 import { useData } from './index';
-import { response, validations } from './validations';
+import { validations } from './validations';
 import type { FC } from 'react';
 import type { CreditCard } from './index';
 
@@ -9,13 +9,12 @@ interface MyContext {
   loading: boolean;
   error: Error | null;
   creditCard: CreditCard;
-  getData: () => void;
+  getData: () => CreditCard[];
   addData: (newData: CreditCard) => void;
   setData: (newData: CreditCard[]) => void;
   deleteData: (value: CreditCard) => void;
   clearFields: () => void;
   setCreditCard: (value: CreditCard) => void;
-  response: typeof response;
   validations: typeof validations;
 }
 
@@ -55,7 +54,6 @@ export const AppProvider: FC<Props> = ({ children }) => {
       addData,
       setData,
       deleteData,
-      response,
       validations,
       clearFields,
       creditCard,

@@ -62,7 +62,6 @@ export const Field: FC<Props> = ({ id, componentName, className, validations }) 
         onChange={handleChange}
         className={`border border-gray-300/30 px-4 h-8 rounded-md focus:outline-none ${componentName === "CVV" ? "w-1/2" : "w-full"}`}
       />
-      
     </article>
   );
 }

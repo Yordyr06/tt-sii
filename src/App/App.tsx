@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useAppContext } from './data/Context'
 import { Container } from './Components/Container'
 import { Img } from './Components/Img'
@@ -8,13 +8,16 @@ import { Button } from './Components/Button'
 
 function App() {
   const {
+    data,
     validations,
-    response,
+    getData,
     addData,
     clearFields
   } = useAppContext();
 
-  console.log(response)
+  useEffect(() => {
+    console.log(data)
+  }, [data]);
 
   return (
     <>
@@ -58,6 +61,12 @@ function App() {
                 name='Cancelar'
                 clearFields={clearFields}
                 className='border border-gray-300 text-white hover:bg-gray-100/90 hover:text-gray-500'
+              />
+
+              <Button 
+                name='Ver Data'
+                getData={getData}
+                className='text-white border border-gray-300 hover:border-blue-500 hover:text-blue-500'
               />
             </Container>
           </Form>

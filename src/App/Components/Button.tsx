@@ -1,19 +1,25 @@
 import { FC } from "react";
+import { useAppContext } from "../data/Context";
 import type { CreditCard } from "../data/index";
 
 interface Props {
   name: string;
   addData?: (newData: CreditCard) => void;
   clearFields?: () => void;
+  getData?: () => CreditCard[];
   className?: string;
 }
 
-export const Button: FC<Props> = ({ name, className, addData, clearFields }) => {
+export const Button: FC<Props> = ({ name, className, addData, clearFields, getData}) => {
+  const { creditCard } = useAppContext();
+
   const handleClick = () => {
     if (name === 'Agregar Tarjeta' && addData) {
-      // return addData()
+      return addData(creditCard)
     } else if (name === 'Cancelar' && clearFields) {
       return clearFields()
+    } else if (name === 'Ver Data' && getData) {
+      return console.log(getData())
     }
   }
   

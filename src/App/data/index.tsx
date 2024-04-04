@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useStorage } from "./useStorage";
-import { response } from "./validations";
+import { validations } from "./validations";
 
 export type Name = string
 export type Digits = string; 
@@ -35,9 +35,15 @@ export const useData = () => {
 
   const addData = (value: CreditCard) => {
     const newData = []
-    if (response.bool) {
+    if (validations.bool(
+      value.digits, 
+      value.name, 
+      value.date, 
+      value.cvv
+    )) {
       newData.push(...data, value)
       setStorage(newData)
+      clearFields()
     }
   }
 
