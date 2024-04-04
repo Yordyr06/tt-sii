@@ -1,4 +1,5 @@
 
+
 # Prueba Tecnica para Desarrollador FrontEnd de SII
 
   
@@ -116,11 +117,14 @@ Se utilizaron las siguientes herramientas con el fin de agilizar, simplificar y 
 
 
   
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+Se utilizo TailwindCSS como framework de CSS para acelerar la maquetacion y diseño, tambien esto permite tener el diseño css junto al html para tener todo en el mismo archivo.
 
-* ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+Se elegio TypeScript al ser una version de JavaScript con tipado fuerte para administrar mejor los datos y evitar posibles errores tipicos que tendria JavaScript al ser de tipado debil.
 
-* ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+Se elegio React como framework/libreria principal para desarrollar por tener la facildiad de permitir crear aplicaciones pequeñas y reactivas de forma rapida y relativamente sencilla.
 
-* ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
-
-* ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+El roll de Vite es el de empaquetar toda la aplicacion para que todas estas tecnologias funcionen correctamente, es una alternativa a webpack que le ahorra al desarrollador todo el paso de configuracion del empaquetador.
