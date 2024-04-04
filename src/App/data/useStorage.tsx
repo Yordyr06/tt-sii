@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-
+import type { Name, Digits, Date, CVV } from './index';
 export interface CreditCard {
-  name: string;
-  number: string;
-  cvv: string;
-  date: string;
+  name: Name;
+  number: Digits;
+  date: Date;
+  cvv: CVV;
 }
 interface StorageHook {
   data: CreditCard[];
@@ -29,14 +29,14 @@ export function useStorage(storage: string, initialStorage: CreditCard[]): Stora
       } else {
         localStorage.setItem(storage, JSON.stringify(initialStorage))
         dataList = initialStorage
+        setData(dataList)
       }
-      setData(dataList)
     } catch (error) {
       setError(new Error(`Error al obtener los datos: ${error}`))
     } finally {
       setLoading(false)
     }
-  }, [storage, initialStorage])
+  }, [storage, initialStorage, setData])
 
   const setStorage = (newStorage: CreditCard[]) => {
     localStorage.setItem(storage, JSON.stringify(newStorage))

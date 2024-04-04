@@ -7,7 +7,13 @@ import { Field } from './Form/Field'
 import { Button } from './Components/Button'
 
 function App() {
-  const { validations } = useAppContext();
+  const { 
+    data, 
+    validations, 
+    addData,
+    clearFields
+  } = useAppContext();
+  console.log(data)
 
   return (
     <>
@@ -41,10 +47,12 @@ function App() {
           >
             <Button 
               name='Agregar Tarjeta'
+              onClick={addData}
               className='bg-blue-500 hover:bg-blue-700 text-white border'
             />
             <Button 
               name='Cancelar'
+              onClick={clearFields}
               className='border border-gray-300 text-white hover:bg-gray-100/90 hover:text-gray-500'
             />
           </Container>

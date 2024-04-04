@@ -25,37 +25,29 @@ export const validations: Validations  = {
   number: (number: string): Res => {
     const regex = /^[0-9]{16}$/;
     if (!regex.test(number)) {
-      response.number = "Número de tarjeta inválido";
-      return response;
+      return { ...response, number: "Número de tarjeta inválido" };
     }
-    response.number = "Número de tarjeta válido";
-    return response;
+    return { ...response, number: "Número de tarjeta válido" }
   },
   name: (name: string): Res => {
     const regex = /^[a-zA-ZáéíóúÁÉÍÓÚ ]{0,20}$/;
     if (!regex.test(name)) {
-      response.name = "Nombre inválido";
-      return response;
+      return { ...response, name: "Nombre inválido" };
     }
-    response.name = "Nombre válido"
-    return response;
+    return { ...response, name: "Nombre válido" };
   },
   date: (date: string): Res => {
     const regex = /^(0[1-9]|1[0-2])\/(2[2-7])$/
     if (!regex.test(date)) {
-      response.date = "Fecha inválida";
-      return response;
+      return { ...response, date: "Fecha inválida" };
     }
-    response.date = "Fecha válida";
-    return response;
+    return { ...response, date: "Fecha válida" };
   },
   cvv: (cvv: string): Res => {
     const regex = /^[0-9]{3}$/;
     if (!regex.test(cvv)) {
-      response.cvv = "CVV inválido";
-      return response;
+      return { ...response, cvv: "CVV inválido" };
     }
-    response.cvv = "CVV válido";
-    return response;
+    return { ...response, cvv: "CVV válido" };
   }
 }

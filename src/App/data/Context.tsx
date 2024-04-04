@@ -9,12 +9,21 @@ interface MyContext {
   data: CreditCard[];
   loading: boolean;
   error: Error | null;
+  name: string;
+  digits: string;
+  date: string;
+  cvv: string;
   getData: () => void;
   addData: (newData: CreditCard) => void;
   setData: (newData: CreditCard[]) => void;
   deleteData: (value: CreditCard) => void;
+  clearFields: () => void;
+  setName: (name: string) => void;
+  setDigits: (digits: string) => void;
+  setDate: (date: string) => void;
+  setCVV: (cvv: string) => void;
   response: typeof response;
-  validations: typeof validations
+  validations: typeof validations;
 }
 
 interface Props {
@@ -38,7 +47,16 @@ export const AppProvider: FC<Props> = ({ children }) => {
     getData,
     addData,
     setData,
-    deleteData 
+    deleteData,
+    clearFields,
+    name,
+    setName,
+    digits,
+    setDigits,
+    date,
+    setDate,
+    cvv,
+    setCVV
   } = useData();
   
   return (
@@ -51,7 +69,16 @@ export const AppProvider: FC<Props> = ({ children }) => {
         setData,
         deleteData,
         response,
-        validations
+        validations,
+        clearFields,
+        name,
+        setName,
+        digits,
+        setDigits,
+        date,
+        setDate,
+        cvv,
+        setCVV
       }}>
       { children }
     </AppContext.Provider>

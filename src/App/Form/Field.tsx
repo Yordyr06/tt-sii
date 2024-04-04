@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import type { FC, ChangeEvent } from "react";
+import { useAppContext } from "../data/Context";
 
 type OnChange = (event: ChangeEvent<HTMLInputElement>) => void;
 interface Props {
@@ -9,11 +10,12 @@ interface Props {
 }
 
 export const Field: FC<Props> = ({ name, className, validations }) => {
-  const [value, setValue] = useState("");
+  const { titular, digits, date, cvv } = useAppContext();
 
   useEffect(() => {
-    setValue("");
-  }, [value])
+    validations(titular);
+  }, [value, validations, setValue]);
+
 
   const handleChange: OnChange = (event) => {
     setValue(event.target.value);
@@ -35,6 +37,7 @@ export const Field: FC<Props> = ({ name, className, validations }) => {
         onChange={handleChange}
         className={`border border-gray-300/30 px-4 h-8 rounded-md focus:outline-none ${name === "CVV" ? "w-1/2" : "w-full"}`}
       />
+      
     </article>
   );
 }
