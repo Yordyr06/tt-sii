@@ -16,7 +16,7 @@ function App() {
   } = useAppContext();
 
   useEffect(() => {
-    console.log(data)
+    data
   }, [data]);
 
   return (
