@@ -5,6 +5,7 @@ export interface Res {
   cvv: string;
   bool: boolean;
 }
+
 export interface Validations {
   number: (number: string) => Res;
   name: (name: string) => Res;
@@ -28,6 +29,7 @@ export const validations: Validations  = {
     }
     return { ...response, number: "Número de tarjeta válido" }
   },
+
   name: (name: string): Res => {
     const regex = /^[a-zA-ZáéíóúÁÉÍÓÚ ]{0,20}$/;
     if (!regex.test(name)) {
@@ -35,6 +37,7 @@ export const validations: Validations  = {
     }
     return { ...response, name: "Nombre válido" };
   },
+  
   date: (date: string): Res => {
     const regex = /^(0[1-9]|1[0-2])\/(2[2-7])$/
     if (!regex.test(date)) {
@@ -42,6 +45,7 @@ export const validations: Validations  = {
     }
     return { ...response, date: "Fecha válida" };
   },
+  
   cvv: (cvv: string): Res => {
     const regex = /^[0-9]{3}$/;
     if (!regex.test(cvv)) {

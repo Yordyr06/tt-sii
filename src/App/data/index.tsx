@@ -1,12 +1,19 @@
 import { useState } from "react";
 import { useStorage } from "./useStorage";
 import { response } from "./validations";
-import type { CreditCard } from "./useStorage";
 
 export type Name = string
 export type Digits = string; 
 export type Date = string; 
-export type CVV = string; 
+export type CVV = string;
+export type Value = string;
+
+export interface CreditCard {
+  "name": Name;
+  "digits": Digits;
+  "date": Date;
+  "cvv": CVV;
+}
 
 export const useData = () => {
   const {
@@ -15,21 +22,22 @@ export const useData = () => {
     error,
     setStorage
   } = useStorage("DATA_V1", [])
-
-  const [name, setName] = useState<Name>("");
-  const [digits, setDigits] = useState<Digits>("");
-  const [date, setDate] = useState<Date>("");
-  const [cvv, setCVV] = useState<CVV>("");
+  const [creditCard, setCreditCard] = useState<CreditCard>({
+    "name": "",
+    "digits": "",
+    "date": "",
+    "cvv": ""
+  })
 
   const getData = () => {
     return data
   }
 
   const addData = (value: CreditCard) => {
-    const newValue = []
+    const newData = []
     if (response.bool) {
-      newValue.push(...data, value)
-      setStorage(newValue)
+      newData.push(...data, value)
+      setStorage(newData)
     }
   }
 
@@ -50,12 +58,13 @@ export const useData = () => {
   }
 
   const clearFields = () => {
-    setName("")
-    setDigits("")
-    setDate("")
-    setCVV("")
+    setCreditCard({
+      "name": "",
+      "digits": "",
+      "date": "",
+      "cvv": ""
+    })
   }
-
 
   return ({
     data,
@@ -65,14 +74,8 @@ export const useData = () => {
     addData,
     setData,
     deleteData,
-    name,
-    setName,
-    digits,
-    setDigits,
-    date,
-    setDate,
-    cvv,
-    setCVV,
+    creditCard, 
+    setCreditCard,
     clearFields
   })
 }

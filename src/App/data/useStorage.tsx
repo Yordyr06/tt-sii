@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
-import type { Name, Digits, Date, CVV } from './index';
-export interface CreditCard {
-  name: Name;
-  number: Digits;
-  date: Date;
-  cvv: CVV;
-}
+import type { CreditCard } from './index';
+
 interface StorageHook {
   data: CreditCard[];
   loading: boolean;

@@ -1,27 +1,20 @@
 import { createContext, useContext } from 'react';
 import { useData } from './index';
 import { response, validations } from './validations';
-import type { CreditCard } from './useStorage';
-// import type { Res, Validations } from './validations';s
 import type { FC } from 'react';
+import type { CreditCard } from './index';
 
 interface MyContext {
   data: CreditCard[];
   loading: boolean;
   error: Error | null;
-  name: string;
-  digits: string;
-  date: string;
-  cvv: string;
+  creditCard: CreditCard;
   getData: () => void;
   addData: (newData: CreditCard) => void;
   setData: (newData: CreditCard[]) => void;
   deleteData: (value: CreditCard) => void;
   clearFields: () => void;
-  setName: (name: string) => void;
-  setDigits: (digits: string) => void;
-  setDate: (date: string) => void;
-  setCVV: (cvv: string) => void;
+  setCreditCard: (value: CreditCard) => void;
   response: typeof response;
   validations: typeof validations;
 }
@@ -49,38 +42,25 @@ export const AppProvider: FC<Props> = ({ children }) => {
     setData,
     deleteData,
     clearFields,
-    name,
-    setName,
-    digits,
-    setDigits,
-    date,
-    setDate,
-    cvv,
-    setCVV
+    creditCard,
+    setCreditCard
   } = useData();
   
   return (
     <AppContext.Provider value={{
-        data,
-        loading,
-        error,
-        getData,
-        addData,
-        setData,
-        deleteData,
-        response,
-        validations,
-        clearFields,
-        name,
-        setName,
-        digits,
-        setDigits,
-        date,
-        setDate,
-        cvv,
-        setCVV
-      }}>
-      { children }
+      data,
+      loading,
+      error,
+      getData,
+      addData,
+      setData,
+      deleteData,
+      response,
+      validations,
+      clearFields,
+      creditCard,
+      setCreditCard
+    }}> { children }
     </AppContext.Provider>
   )
 }

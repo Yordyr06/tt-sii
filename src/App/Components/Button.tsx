@@ -1,17 +1,26 @@
 import { FC } from "react";
-import type { CreditCard } from "../data/useStorage";
+import type { CreditCard } from "../data/index";
 
 interface Props {
   name: string;
-  onClick: (newData: CreditCard) => void;
+  addData?: (newData: CreditCard) => void;
+  clearFields?: () => void;
   className?: string;
 }
 
-export const Button: FC<Props> = ({ name, className, onClick }) => {
+export const Button: FC<Props> = ({ name, className, addData, clearFields }) => {
+  const handleClick = () => {
+    if (name === 'Agregar Tarjeta' && addData) {
+      // return addData()
+    } else if (name === 'Cancelar' && clearFields) {
+      return clearFields()
+    }
+  }
+  
   return (
     <button
       type="submit"
-      onClick={() => onClick}
+      onClick={handleClick}
       className={`w-auto rounded-full px-4 py-1 text-xs font-medium inline-block align-top ${className}`}
     >
       { name }
