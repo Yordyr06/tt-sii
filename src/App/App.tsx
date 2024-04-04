@@ -8,10 +8,13 @@ import { Button } from './Components/Button'
 
 function App() {
   const {
-    validations, 
+    validations,
+    response,
     addData,
     clearFields
   } = useAppContext();
+
+  console.log(response)
 
   return (
     <>

@@ -11,6 +11,7 @@ export interface Validations {
   name: (name: string) => Res;
   date: (date: string) => Res;
   cvv: (cvv: string) => Res;
+  bool: (number: string, name: string, date: string, cvv: string) => boolean;
 }
 
 export const response: Res = {
@@ -52,5 +53,17 @@ export const validations: Validations  = {
       return { ...response, cvv: "CVV inválido" };
     }
     return { ...response, cvv: "CVV válido" };
+  },
+
+  bool: (number: string, name: string, date: string, cvv: string): boolean => {
+    const numberRes = validations.number(number);
+    const nameRes = validations.name(name);
+    const dateRes = validations.date(date);
+    const cvvRes = validations.cvv(cvv);
+    
+    if (numberRes.bool && nameRes.bool && dateRes.bool && cvvRes.bool) {
+      return true;
+    }
+    return false;
   }
 }
