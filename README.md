@@ -101,6 +101,8 @@ c) Observaciones si se tienen.
 ## Uso
 
   
+![enter image description here](https://raw.githubusercontent.com/Yordyr06/tt-sii/main/src/assets/TT-Sii.webp)
+
 
 Para uso solo debe ingresar [aqui](https://tt-nssfgwt7g-yordy-almontes-projects.vercel.app/), el uso es muy intuitivo,  rellene los campos y cuando desee agregarlos pulse el boton de agregar, cuando desee verlos pulse el boton de ver data y si quiere borrar todos los campos pulse cancelar
 
